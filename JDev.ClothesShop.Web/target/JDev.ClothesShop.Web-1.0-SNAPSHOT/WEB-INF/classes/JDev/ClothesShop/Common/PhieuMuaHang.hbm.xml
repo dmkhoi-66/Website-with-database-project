@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="JDev.ClothesShop.DAO.PhieuMuaHang" table="phieumuahang">
+        <id name="MaPhieuMuaHang" type="integer">
+            <column name="MaPhieuMuaHang" />
+            <generator class="identity"/>
+        </id>
+        
+        <many-to-one cascade="save-update" name="KhachHang" class="JDev.ClothesShop.DAO.TaiKhoan" lazy="false">
+            <column name="KhachHang" />
+        </many-to-one>
+        
+        <property name="NgayMua" type="date">
+            <column name="NgayMua" />
+        </property>
+
+        <bag name="DanhSachHang" inverse="true" lazy="false">
+            <key unique="true">
+                <column name="MaPhieuMuaHang"/>
+            </key>
+            <one-to-many class="JDev.ClothesShop.DAO.ChiTietPhieuMuaHang"/>
+        </bag>
+    </class>
+</hibernate-mapping>

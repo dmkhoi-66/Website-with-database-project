@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="JDev.ClothesShop.DAO.KichThuoc" table="kichthuoc">
+          <id name="MaKichThuoc" type="integer">
+            <column name="MaKichThuoc"/>
+            <generator class="increment"/>
+        </id>
+        <property name="KichThuoc" type="string">
+            <column length="50" name="KichThuoc"/>
+        </property>
+    </class>
+</hibernate-mapping>
