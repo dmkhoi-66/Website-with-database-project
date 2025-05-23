@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+         
+">
+    
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
+    >
+        <property name="configLocation" value="JDev/ClothesShop/Common/hibernate.cfg.xml" />
+    </bean>
+    
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+    >
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean> 
+    
+</beans>

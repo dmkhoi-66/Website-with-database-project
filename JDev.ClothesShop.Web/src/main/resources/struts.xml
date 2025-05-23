@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.action.extension" value=",do"/> 
+    
+    <package name="index" namespace="/index" extends="struts-default">
+        <default-action-ref name="index"/>
+
+        <action name="index" class="JDev.ClothesShop.Web.Action.Index.Main" >
+            <result name="SUCCESS">/WEB-INF/jsp/index.jsp</result>
+        </action>
+    </package>
+    
+    <package name="account" namespace="/account" extends="struts-default">
+        <action name="signup" class="JDev.ClothesShop.Web.Action.Account.SignUp" >
+            <result name="SUCCESS">/WEB-INF/jsp/index.jsp</result>
+        </action>
+        <action name="login" class="JDev.ClothesShop.Web.Action.Account.Login" >
+            <result name="SUCCESS">/WEB-INF/jsp/index.jsp</result>
+        </action>
+        <action name="history" class="JDev.ClothesShop.Web.Action.Account.History" >
+            <result name="SUCCESS">/WEB-INF/jsp/index.jsp</result>
+        </action>
+        <action name="sendlogin" class="JDev.ClothesShop.Web.Action.Account.SendLogin" >
+            <result name="SUCCESS" type="redirectAction">
+                <param name="namespace">/index</param>
+                <param name="actionName">index</param>
+            </result>
+            <result name="USER OR PASSWORD EMPTY">/WEB-INF/index.jsp</result>
+        </action>
+        <action name="viewhistory" class="JDev.ClothesShop.Web.Action.Account.ViewHistory" >
+            <result name="SUCCESS">/WEB-INF/jsp/index.jsp</result>
+            <result name="REDIRECT TO LOGIN" type="redirectAction">
+                <param name="namespace">/account</param>
+                <param name="actionName">login</param>
+            </result>
+        </action>
+        <action name="logout" class="JDev.ClothesShop.Web.Action.Account.Logout" >
+            <result name="SUCCESS" type="redirectAction">
+                <param name="namespace">/index</param>
+                <param name="actionName">index</param>
+            </result>
+        </action> 
+        <action name="save" class="JDev.ClothesShop.Web.Action.Account.Save" >
+            <result name="SUCCESS" type="redirectAction">
+                <param name="namespace">/account</param>
+                <param name="actionName">login</param>
+            </result>
+            <result name="USERNAME EXIST" type="redirectAction">
+                <param name="namespace">/index</param>
+                <param name="actionName">index</param>
+            </result>
+            <result name="USERNAME OR PASSWORD EMPTY" type="redirectAction">
+                <param name="namespace">/index</param>
+                <param name="actionName">index</param>
+            </result>
+        </action> 
+    </package>
+
+    <package name="product" namespace="/product" extends="struts-default">
+        <action name="view" class="JDev.ClothesShop.Web.Action.Product.View" >
+            <result name="SUCCESS">/WEB-INF/jsp/index.jsp</result>
+        </action>
+        <action name="detail" class="JDev.ClothesShop.Web.Action.Product.Detail" >
+            <result name="SUCCESS">/WEB-INF/jsp/index.jsp</result>
+        </action>
+        <action name="search" class="JDev.ClothesShop.Web.Action.Product.Search" >
+            <result name="SUCCESS">/WEB-INF/jsp/index.jsp</result>
+        </action>
+        <action name="searchresult" class="JDev.ClothesShop.Web.Action.Product.SearchResult" >
+            <result name="SUCCESS">/WEB-INF/jsp/index.jsp</result>
+        </action>
+        <action name="addtocart" class="JDev.ClothesShop.Web.Action.Product.AddToCart" >
+            <result name="SUCCESS" type="redirectAction">
+                <param name="namespace">/product</param>
+                <param name="actionName">detail</param>
+                <param name="id">${productid}</param>
+                <param name="addtocart">oke</param>
+            </result>
+            <result name="PRODUCT NOT FOUND" type="redirectAction">
+                <param name="namespace">/index</param>
+                <param name="actionName">index</param>
+            </result>
+        </action>
+    </package>
+    
+    <package name="cart" namespace="/cart" extends="struts-default">
+        <action name="view" class="JDev.ClothesShop.Web.Action.Cart.View" >
+            <result name="SUCCESS">/WEB-INF/jsp/index.jsp</result>
+        </action>
+        <action name="delete" class="JDev.ClothesShop.Web.Action.Cart.Delete" >
+            <result name="SUCCESS" type="redirectAction">
+                <param name="namespace">/cart</param>
+                <param name="actionName">view</param>
+            </result>
+        </action>
+        <action name="update" class="JDev.ClothesShop.Web.Action.Cart.Update" >
+            <result name="SUCCESS">/WEB-INF/jsp/index.jsp</result>
+        </action>
+        <action name="updatecart" class="JDev.ClothesShop.Web.Action.Cart.UpdateCart" >
+            <result name="SUCCESS" type="redirectAction">
+                <param name="namespace">/cart</param>
+                <param name="actionName">view</param>
+            </result>
+        </action>
+        <action name="pay" class="JDev.ClothesShop.Web.Action.Cart.Pay" >
+            <result name="REDIRECT TO LOGIN" type="redirectAction">
+                <param name="namespace">/account</param>
+                <param name="actionName">login</param>
+            </result>
+            <result name="SUCCESS" type="redirectAction">
+                <param name="namespace">/cart</param>
+                <param name="actionName">view</param>
+            </result>
+        </action>
+    </package>
+</struts>

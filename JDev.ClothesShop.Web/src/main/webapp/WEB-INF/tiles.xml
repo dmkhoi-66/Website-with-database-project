@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+    <definition name="Page" template="/WEB-INF/jsp/template.jsp">
+        <put-attribute name="title" value="Page" /> 
+    </definition>
+    
+    <definition name="main" extends="Page">
+        <put-attribute name="content" value="/WEB-INF/jsp/index/main.jsp"/>
+    </definition>
+    
+    <definition name="signup" extends="Page">
+        <put-attribute name="content" value="/WEB-INF/jsp/account/signup.jsp"/>
+    </definition>
+    
+    <definition name="login" extends="Page">
+        <put-attribute name="content" value="/WEB-INF/jsp/account/login.jsp"/>
+    </definition>
+    
+    <definition name="history" extends="Page">
+        <put-attribute name="content" value="/WEB-INF/jsp/account/history.jsp"/>
+    </definition>
+    
+    <definition name="viewhistory" extends="Page">
+        <put-attribute name="content" value="/WEB-INF/jsp/account/viewhistory.jsp"/>
+    </definition>
+    
+    <definition name="cart" extends="Page">
+        <put-attribute name="content" value="/WEB-INF/jsp/cart/view.jsp"/>
+    </definition>
+      
+    <definition name="cartupdate" extends="Page">
+        <put-attribute name="content" value="/WEB-INF/jsp/cart/cartupdate.jsp"/>
+    </definition>
+    
+    <definition name="product" extends="Page">
+        <put-attribute name="content" value="/WEB-INF/jsp/product/product.jsp"/>
+    </definition>
+    
+    <definition name="search" extends="Page">
+        <put-attribute name="content" value="/WEB-INF/jsp/product/search.jsp"/>
+    </definition>
+    
+    <definition name="searchresult" extends="Page">
+        <put-attribute name="content" value="/WEB-INF/jsp/product/searchresult.jsp"/>
+    </definition>
+    
+    <definition name="view" extends="Page">
+        <put-attribute name="content" value="/WEB-INF/jsp/product/view.jsp"/>
+    </definition>
+    
+</tiles-definitions> 
